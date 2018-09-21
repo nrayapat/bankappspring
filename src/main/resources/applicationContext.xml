@@ -1,0 +1,41 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+<context:annotation-config/>
+<context:component-scan base-package="com.capgemini.bankapp"></context:component-scan>
+<bean id = "dataSource" class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+<property name = "driverClassName" value = "com.mysql.cj.jdbc.Driver" />
+<property name = "url" value = "jdbc:mysql://localhost:3306/bankapplication" />
+<property name = "username" value = "root" />
+<property name = "password" value = "root"/>
+</bean>
+
+ <bean id ="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+<property name = "dataSource" ref = "dataSource"/>
+</bean>
+<bean id = "bankRepository"
+class = "com.capgemini.bankapp.repository.impl.BankAccountRepositoryImpl">
+<property name = "jdbcTemplate" ref = "jdbcTemplate"/>
+</bean>
+
+
+<bean id="bankRepository" class="com.capgemini.bankapp.repository.impl.BankAccountRepositoryImpl"/>
+
+
+<bean id="bankService" class="com.capgemini.bankapp.service.impl.BankAccountServiceImpl">
+
+<property name = "bankAccountRepository" ref= "bankRepository"/>
+<constructor-arg index=0 ref = "bankAccountService"></constructor-arg>
+</bean>
+
+
+<bean id="bankAccountController" class="com.capgemini.bankapp.controller.BankAccountController">
+<property name="bankAccountService" ref="bankService"/>
+</bean>
+
+</beans>
+  -->
